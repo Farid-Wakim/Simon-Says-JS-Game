@@ -1,0 +1,192 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <style>
+            .btn{ 
+                height: 500px;
+                width:  450px;
+            }
+        </style>
+    </head>
+    <body>
+        <button class="btn" id="redBtn" onclick="getRedColor()">Red</button>
+        <button class="btn" id="greenBtn" onclick="getGreenColor()">Green</button>
+        <button class="btn" id="yellowBtn" onclick="getYellowColor()">Yellow</button>
+        <button class="btn" id="blueBtn"onclick="getBlueColor()">Blue</button>
+        
+        <br>
+        <br>
+        <br>
+        <button onclick="arrayUserShow()">Submit array</button>
+        <button onclick="SimonSays()">Start Game</button>
+        <button onclick="colorDance();"> Reset Game</button>
+        <script>
+let redBtn = document.getElementById("redBtn");
+let greenBtn = document.getElementById("greenBtn");
+let yellowBtn = document.getElementById("yellowBtn");
+let blueBtn = document.getElementById("blueBtn");
+let time = 0;
+let difficultyLevel = 1;
+let started = false;
+let arrayCPU = [];
+let arrayUser = [];
+
+//function that returns a random int from min to max, used later to pick random colors.
+function getRndInteger(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+//all colors
+function colorDanceClear() {
+    redBtn.style.backgroundColor = "red";
+    blueBtn.style.backgroundColor = "blue";
+    yellowBtn.style.backgroundColor = "yellow";
+    greenBtn.style.backgroundColor = "green";
+}
+
+//show red
+function colorDanceRed() {
+    redBtn.style.backgroundColor = "black";
+    greenBtn.style.backgroundColor = "green";
+    yellowBtn.style.backgroundColor = "yellow";
+    blueBtn.style.backgroundColor = "blue";
+}
+//show green
+function colorDanceGreen() {
+    redBtn.style.backgroundColor = "red";
+    greenBtn.style.backgroundColor = "black";
+    yellowBtn.style.backgroundColor = "yellow";
+    blueBtn.style.backgroundColor = "blue";
+}
+//show yellow
+function colorDanceYellow() {
+    redBtn.style.backgroundColor = "red";
+    greenBtn.style.backgroundColor = "green";
+    yellowBtn.style.backgroundColor = "black";
+    blueBtn.style.backgroundColor = "blue";
+}
+//show blue
+function colorDanceBlue() {
+    redBtn.style.backgroundColor = "red";
+    greenBtn.style.backgroundColor = "green";
+    yellowBtn.style.backgroundColor = "yellow";
+    blueBtn.style.backgroundColor = "black";
+}
+//show all selected
+function colorDanceAll() {
+    redBtn.style.backgroundColor = "black";
+    greenBtn.style.backgroundColor = "black";
+    yellowBtn.style.backgroundColor = "black";
+    blueBtn.style.backgroundColor = "black";
+}
+
+function colorDance() {
+    let time = 0;
+    console.log("reset");
+    setTimeout(colorDanceRed, time += 500);
+    setTimeout(colorDanceGreen, time += 500);
+    setTimeout(colorDanceYellow, time += 500);
+    setTimeout(colorDanceBlue, time += 500);
+    setTimeout(colorDanceYellow, time += 500);
+    setTimeout(colorDanceGreen, time += 500);
+    setTimeout(colorDanceRed, time += 500);
+    setTimeout(colorDanceClear, time += 500);
+    setTimeout(colorDanceAll, time += 500);
+    setTimeout(colorDanceClear, time += 500);
+    arrayCPU = [];
+    arrayUser = [];
+    difficultyLevel = 1;
+}
+//on startup \/
+colorDance();
+
+function SimonSays() {
+    console.log("Showing combination");
+    let t = 0;
+    arrayCPU = [];
+    for (let i = 0; i < difficultyLevel; i++) {
+        arrayCPU[i] = getRndInteger(1, 4);
+        switch (arrayCPU[i]) {
+            case 1:
+                setTimeout(colorDanceRed, t += 1000);
+                setTimeout(colorDanceClear, t += 1000);
+                break;
+            case 2:
+                setTimeout(colorDanceGreen, t += 1000);
+                setTimeout(colorDanceClear, t += 1000);
+                break;
+            case 3:
+                setTimeout(colorDanceYellow, t += 1000);
+                setTimeout(colorDanceClear, t += 1000);
+                break;
+            case 4:
+                setTimeout(colorDanceBlue, t += 1000);
+                setTimeout(colorDanceClear, t += 1000);
+                break;
+        }
+    }
+    console.log("In : " + arrayCPU);
+    started = true;
+}
+
+function getRedColor() {
+    if (started) {
+        console.log("red");
+        arrayUser.push(1);
+    } else console.log("Game didn't start yet.")
+}
+
+function getGreenColor() {
+    if (started) {
+        console.log("green");
+        arrayUser.push(2);
+    } else console.log("Game didn't start yet.")
+}
+
+function getYellowColor() {
+    if (started) {
+        console.log("yellow");
+        arrayUser.push(3);
+    } else console.log("Game didn't start yet.")
+}
+
+function getBlueColor() {
+    if (started) {
+        console.log("blue");
+        arrayUser.push(4);
+    } else console.log("Game didn't start yet.")
+}
+
+
+function arrayUserShow() {
+    console.log(arrayUser);
+    let correctSteps = 0;
+    for (let i = 1; i <= difficultyLevel; i++) {
+        if (arrayUser[i] == arrayCPU[i]) {
+            console.log("Good Selection");
+            correctSteps++;
+        } else {
+            alert("You lose", "You made a mistake but you are still on level: " +a)
+            break;
+        }
+    }
+    if (correctSteps = difficultyLevel) {
+        alert("GG");
+        arrayCPU = [];
+        arrayUser = [];
+        difficultyLevel++;
+    }
+}
+
+            
+
+
+            
+
+        </script>
+    </body>
+    </html>
